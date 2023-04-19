@@ -67,7 +67,7 @@ func (f *FakeTodoRepository) UpdateByID(id primitive.ObjectID, update bson.M) (*
 	return &mongo.UpdateResult{ModifiedCount: 1}, nil
 }
 
-func contains(n models.Todo, ns []models.Todo) bool {
+func slicesContains(n models.Todo, ns []models.Todo) bool {
 	for _, todo := range ns {
 		if n.ID.Hex() == todo.ID.Hex() {
 			return true
@@ -76,13 +76,13 @@ func contains(n models.Todo, ns []models.Todo) bool {
 	return false
 }
 
-func isSlicesEqual(a, b []models.Todo) bool {
+func slicesEqual(a, b []models.Todo) bool {
 	if len(a) != len(b) {
 		return false
 	}
 
-	for _, atodo := range a {
-		if !contains(atodo, b) {
+	for _, todo := range a {
+		if !slicesContains(todo, b) {
 			return false
 		}
 	}
@@ -163,7 +163,7 @@ func TestTodoGetAll(t *testing.T) {
 		t.Fatalf("Failed to decode response body: %v", err)
 	}
 
-	if !isSlicesEqual(result, todos) {
+	if !slicesEqual(result, todos) {
 		t.Errorf("Handler returned wrong body: got %v want %v", result, todos)
 	}
 }
