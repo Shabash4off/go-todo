@@ -5,6 +5,7 @@ This is a simple Todo application built using Go. The application allows users t
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Running the application](#running-the-application)
+- [Testing](#testing)
 - [API Endpoints](#api-endpoints)
 ## Features
 - Create a new todo item
@@ -39,6 +40,11 @@ This is a simple Todo application built using Go. The application allows users t
     go build -o todo todo/cmd/todo
     ./todo 
     ```
+## Testing
+To run the test suite for the application, execute the following command:
+```bash
+go test -v todo/test
+```
 ## API Endpoints
 | Method   | Endpoint                  | Description                |
 |----------|---------------------------|----------------------------|
