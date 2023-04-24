@@ -5,6 +5,7 @@ This is a simple Todo application built using Go. The application allows users t
 - [Requirements](#requirements)
 - [Installation](#installation)
 - [Running the application](#running-the-application)
+- [Using docker](#using-docker)
 - [API Endpoints](#api-endpoints)
 ## Features
 - Create a new todo item
@@ -13,7 +14,7 @@ This is a simple Todo application built using Go. The application allows users t
 - Update a todo item by ID
 - Delete a todo item by ID
 ## Requirements
-- [Go](https://golang.org/doc/install) version 1.16 or higher
+- [Go](https://golang.org/doc/install) version 1.18 or higher
 - [MongoDB](https://www.mongodb.com/try/download/community) version 4.4 or higher
 ## Installation
 1. Clone the repository:
@@ -39,6 +40,31 @@ This is a simple Todo application built using Go. The application allows users t
     go build -o todo todo/cmd/todo
     ./todo 
     ```
+## Using Docker
+You can also run the application using Docker and Docker Compose.
+### Prerequisites
+- Docker
+- Docker Compose
+### Build and Run the Application
+1. Build the Docker image:
+   ```bash
+   docker build -t todo .
+   ```
+2. Run the Docker container:
+   ```bash
+   docker run -p 8080:8080 todo
+   ```
+Now the application is running at `http://localhost:8080`.
+### Using Docker Compose
+1. Start the application and MongoDB using Docker Compose:
+   ```bash
+   docker-compose up
+   ```
+2. Stop the application and MongoDB:
+   ```bash
+   docker-compose down
+   ```
+
 ## API Endpoints
 | Method   | Endpoint                  | Description                |
 |----------|---------------------------|----------------------------|

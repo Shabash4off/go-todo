@@ -26,9 +26,7 @@ func main() {
 	if !ok {
 		log.Fatal("PORT not found")
 	}
-
-	host, _ := os.LookupEnv("HOST")
-	address := host + ":" + port
+	address := ":" + port
 
 	mongoClient := db.NewMongoClient(mongoUri)
 	todoDb := mongoClient.Database("todo")
