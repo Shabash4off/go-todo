@@ -111,9 +111,11 @@ func (t *Todo) UpdateByID(w http.ResponseWriter, r *http.Request) {
 	}
 
 	result, err := t.repository.UpdateByID(id, bson.M{
-		"title":   todo.Title,
-		"content": todo.Content,
-		"status":  todo.Status,
+		"$set": bson.M{
+			"title":   todo.Title,
+			"content": todo.Content,
+			"status":  todo.Status,
+		},
 	})
 	if err != nil {
 		http.Error(w, "Todo updating error", http.StatusInternalServerError)
